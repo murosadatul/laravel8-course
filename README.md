@@ -20,7 +20,7 @@ This project is used as a laravel course material.
    - posts
    - post_tags
    - tags
-   
+
 ## Steps
 ### Download & Install dependencies
 ```bash
@@ -47,7 +47,7 @@ DB_PASSWORD=your_password
     ```bash
     #create database 
     #mysql shell
-    create database laravel_course_db;
+    create database laravel_portal_berita;
     exit;
 
     #bash shell
