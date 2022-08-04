@@ -31,8 +31,8 @@ This project is used as a laravel course material.
 ## Steps
 ### Download & Install dependencies
 ```bash
-git clone https://github.com/wzije/laravel8-learning-project.git
-cd laravel8-learning-project
+git clone https://github.com/murosadatul/laravel8-portal-berita.git
+cd laravel8-portal-berita
 cp .env.example .env
 composer install
 ```
