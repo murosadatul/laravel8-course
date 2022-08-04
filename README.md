@@ -15,19 +15,12 @@ This project is used as a laravel course material.
 
 ## Model & Migration 
 1. Table
-   - phones
-   - kinds
-   - colors
-   - release_dates
-   - products
-   - posts (no relation)
-
-2. Relations
-   - `Phone` -> hasMany -> `Kind` ; `Kind` -> belongsTo -> `Phone`
-   - `Kind` -> hasMany -> `Color` ; `Color` -> belongsTo -> `Kind`
-   - `Kind` -> hasOne -> `ReleaseDate`;  `ReleaseDate` -> belongsTo -> `Kind`
-   - `Phone` -> belongsToMany -> `Product` ; Pivot ; `Product` -> belongsToMany -> `Phone`
-
+   - abouts
+   - categories
+   - posts
+   - post_tags
+   - tags
+   
 ## Steps
 ### Download & Install dependencies
 ```bash
