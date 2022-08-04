@@ -81,7 +81,7 @@ DB_PASSWORD=your_password
    ```
 ### Run Application
    ```
-   php artisan serv
+   php artisan serve
    ```
 
 ## Notes 
