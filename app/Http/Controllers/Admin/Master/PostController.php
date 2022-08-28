@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Master;
 
-use App\Models\Category;
-use App\Models\About;
-use App\Models\Post;
-use App\Models\Tag;
+use App\Http\Controllers\Base\AdminBaseController;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class PostController extends AdminBaseController
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-
+        return parent::display('admin.master.posts.index');
     }
 
     /**

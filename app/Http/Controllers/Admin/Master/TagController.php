@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Master;
 
-use App\Models\Category;
-use App\Models\About;
-use App\Models\Post;
-use App\Models\Tag;
+use App\Http\Controllers\Base\AdminBaseController;
 use Illuminate\Http\Request;
+use App\Models\Tag;
 
-class TagController extends Controller
+class TagController extends AdminBaseController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-
+        $data['rs_id'] = Tag::get_lists();
+        return parent::display('admin.master.tags.index')->with($data);
     }
 
     /**
@@ -27,7 +26,8 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        $data['mode_page'] = 'add';
+        return parent::display('admin.master.tags.form')->with($data);
     }
 
     /**
@@ -38,7 +38,20 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $id = $request->input('id');
+            $request->validate(["name" => 'required',]);
+                if($request){
+                    if(empty($id)){
+                        Tag::create($request->all());
+                    }else{
+                        Tag::find($id)->update($request->all());
+                    }
+                    return redirect('/tag');
+                }
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+        }
     }
 
     /**
@@ -60,7 +73,9 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['mode_page'] = 'edit';
+        $data['rs_id']     = Tag::find($id);
+        return parent::display('admin.master.tags.form')->with($data);
     }
 
     /**
@@ -83,6 +98,11 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            Tag::find($id)->delete();
+            return redirect('/tag');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+        }
     }
 }
