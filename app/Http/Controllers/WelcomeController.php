@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class WelcomeController extends Controller
 {
@@ -15,10 +16,13 @@ class WelcomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function __construct()
     {
 
-
+    }
+    public function index()
+    {
         $data['active_navbar'] = '';
 
         $Post = (new Post);
