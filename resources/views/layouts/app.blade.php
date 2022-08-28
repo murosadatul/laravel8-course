@@ -24,7 +24,6 @@
             @include('layouts.sidebar')
         </div>
     </main>
-    @include('layouts.login');
     @include('layouts.footer')
 </body>
 </html>
