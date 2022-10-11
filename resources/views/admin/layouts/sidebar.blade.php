@@ -74,7 +74,7 @@
         </a>
         <div class="collapse" id="ui-posts">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="/post">Posts</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/masterpost">Posts</a></li>
             <li class="nav-item"> <a class="nav-link" href="/category">Categories</a></li>
             <li class="nav-item"> <a class="nav-link" href="/tag">Tags</a></li>
           </ul>
