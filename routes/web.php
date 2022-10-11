@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\Master\PostController;
+use App\Http\Controllers\Admin\Master\MasterPostController;
 use App\Http\Controllers\Admin\Master\CategoryController;
 use App\Http\Controllers\Admin\Master\TagController;
 use Illuminate\Support\Facades\Route;
@@ -23,19 +24,10 @@ Route::get("/", [WelcomeController::class, "index"]);
 
 Route::get("/about", [PageController::class, "about"]);
 
-
-// Route::get('/home', function(Request $request){
-//     $user = Illuminate\Support\Facades\Auth::user();
-//     session('id',$user->id);
-//     session('name',$user->name);
-//     $sess = $request->session();
-//     dd($sess);
-//     // redirect('dashboard');
-// });
-
 // backend routs
 Route::get('/dashboard',[DashboardController::class, "index"]);
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
 Route::prefix('post')->group(function () {
     Route::get('', [PostController::class, "index"]);
     Route::get('categories/{id}', [PostController::class, "categories"]);
@@ -47,6 +39,17 @@ Route::prefix('post')->group(function () {
     Route::put('/{id}', [PostController::class, "update"]);
     Route::delete('/{id}', [PostController::class, "destroy"]);
 });
+
+Route::prefix('masterpost')->group(function(){
+    Route::get('',[MasterPostController::class,"index"]);
+    Route::get('/create',[MasterPostController::class,"create"]);
+    Route::get('/{id}',[MasterPostController::class,"show"]);
+    Route::get('/{id}/edit',[MasterPostController::class,"edit"]);
+    Route::post('/',[MasterPostController::class,"store"]);
+    Route::put('/{id}',[MasterPostController::class,"update"]);
+    Route::delete('/{id}',[MasterPostController::class,"destroy"]);
+});
+
 Route::prefix('category')->group(function (){
     Route::get('', [CategoryController::class, "index"]);
     Route::get('/create', [CategoryController::class, "create"]);
@@ -56,6 +59,7 @@ Route::prefix('category')->group(function (){
     Route::put('/{id}', [CategoryController::class, "update"]);
     Route::delete('/{id}', [CategoryController::class, "destroy"]);
 });
+
 Route::prefix('tag')->group(function (){
     Route::get('', [TagController::class, "index"]);
     Route::get('/create', [TagController::class, "create"]);
@@ -65,29 +69,3 @@ Route::prefix('tag')->group(function (){
     Route::put('/{id}', [TagController::class, "update"]);
     Route::delete('/{id}', [TagController::class, "destroy"]);
 });
-
-
-// Route::prefix('dashboard')->group(function(){
-
-//     dd(Illuminate\Support\Facades\Auth::user());
-//     if(empty(!Illuminate\Support\Facades\Auth::user()))
-//     {
-
-//         // session($session);
-//     }
-
-//     // Route::get('index/', [DashboardController::class, "index"]);
-// });
-// function(){
-    // dd(Illuminate\Support\Facades\Auth::user());
-// }
-
-
-// Route::get('/phones', [PhoneController::class, "index"])->name('phones');
-// Route::get('/phones/search', [PhoneController::class, "search"])->name('phones');
-// Route::get('/phones/create', [PhoneController::class, "create"])->name('phone-create');
-// Route::get('/phones/{id}', [PhoneController::class, "show"])->name('phone');
-// Route::post('/phones', [PhoneController::class, "store"])->name('phone-store');
-// Route::get('/phones/{id}/edit', [PhoneController::class, "edit"])->name('phone-edit');
-// Route::put('/phones/{id}', [PhoneController::class, "update"])->name('phone-update');
-// Route::delete('/phones/{id}', [PhoneController::class, "destroy"])->name('phone-destroy');
