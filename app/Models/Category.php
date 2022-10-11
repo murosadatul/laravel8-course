@@ -26,6 +26,11 @@ class Category extends Model
         $query = DB::table('categories')->paginate(5);
         return $query;
     }
+
+    public function get_all()
+    {
+        return DB::table('categories')->get();
+    }
 }
 
 
