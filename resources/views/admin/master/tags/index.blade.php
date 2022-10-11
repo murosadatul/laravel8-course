@@ -7,7 +7,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Master</a></li>
-        <li class="breadcrumb-item"><a href="/category">Tags</a></li>
+        <li class="breadcrumb-item"><a href="/tag">Tags</a></li>
         <li class="breadcrumb-item active" aria-current="page">List Data</li>
       </ol>
     </nav>
