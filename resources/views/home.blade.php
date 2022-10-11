@@ -14,7 +14,7 @@
             <p class="blog-post-meta"><b>{{$item->categori}}</b> {{ date("F d, Y", strtotime($item->created_at)) }} by <a href="#">{{$item->author}}</a></p>
 
             <image class="img img-circle" width="180" src="{{asset($item->image)}}"/>
-            <p>{{$item->body}}</p>
+            <p>{!! $item->body !!}</p>
             <a href="/post/view/{{$item->id}}" class="btn btn-sm btn-primary ">Readmore</a>
         </article>
         <hr>
