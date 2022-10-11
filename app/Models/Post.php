@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\DB;
 class Post extends Model
 {
     use HasFactory;
-
     protected $table = 'posts';
+    protected $fillable = array('category_id','title','body','image','author');
 
     public function archives()
     {
@@ -20,10 +20,20 @@ class Post extends Model
         return $query;
     }
 
-    function articles()
+    public function articles()
     {
         $query = Post::selectRaw('*,
         (select name from categories where id = category_id) as categori')->paginate(5);
+        return $query;
+    }
+
+    public function get_lists()
+    {
+        // with eloquent
+        // --> $query = post::paginate(5);
+
+        // with Query builder
+        $query = DB::table('posts')->paginate(5);
         return $query;
     }
 }
