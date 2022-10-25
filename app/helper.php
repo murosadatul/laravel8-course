@@ -1,8 +1,8 @@
 <?php
 
-function changeDateFormat($date,$format_date)
+function changeDateFormat($date,$new_format)
 {
-    return \Carbon\Carbon::createFromFormat('Y-m-d',$date)->format($format_date);
+    return \Carbon\Carbon::createFromFormat('Y-m-d',$date)->format($new_format);
 }
 
 function read_more($text,$length)
@@ -19,4 +19,11 @@ function file_path($file)
 {
     $result = 'storage/'.$file;
     return $result;
+}
+
+function changeDateTimeFormat($datetime,$new_format)
+{
+    $result = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$datetime)->format($new_format);
+    return $result;
+
 }
