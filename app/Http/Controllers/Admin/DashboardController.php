@@ -21,22 +21,26 @@ class DashboardController extends AdminBaseController
 
     public function index( Request $request)
     {
-        // dd(session::all());
-        return parent::display('admin.dashboard.index');
-    }
+        $params['potential_growth'] = 12.34;
+        $params['revenue_current']  = 17.34;
+        $params['daily_income']     = 12.34;
+        $params['expense_current']  = 31.53;
 
-    public function about()
-    {
-        return view('pages.about');
-    }
+        $params['revenue']  = 32123;
+        $params['sales']    = 45850;
+        $params['purchase'] = 2039;
 
-    public function portofolio()
-    {
-        return view('pages.portofolio');
-    }
+        $params['chartdata'] = [55, 25, 20];
 
-    public function contact()
-    {
-        return view('pages.contact');
+        $params['transfer_paypal'] = array(
+            'time' => '2019-01-07 09:12:00',
+            'nominal' => 236
+        );
+
+        $params['transfer_stripe'] = array(
+            'time' => '2019-01-07 19:12:00',
+            'nominal' => 593
+        );
+        return parent::display('admin.dashboard.index')->with($params);
     }
 }

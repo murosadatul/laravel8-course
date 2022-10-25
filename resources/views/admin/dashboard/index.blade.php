@@ -10,7 +10,7 @@
           <div class="row">
             <div class="col-9">
               <div class="d-flex align-items-center align-self-start">
-                <h3 class="mb-0">$12.34</h3>
+                <h3 class="mb-0">${{ number_format($potential_growth,2) }}</h3>
                 <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
               </div>
             </div>
@@ -30,7 +30,7 @@
           <div class="row">
             <div class="col-9">
               <div class="d-flex align-items-center align-self-start">
-                <h3 class="mb-0">$17.34</h3>
+                <h3 class="mb-0">${{ number_format($revenue_current,2) }}</h3>
                 <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p>
               </div>
             </div>
@@ -50,7 +50,7 @@
           <div class="row">
             <div class="col-9">
               <div class="d-flex align-items-center align-self-start">
-                <h3 class="mb-0">$12.34</h3>
+                <h3 class="mb-0">${{ number_format($daily_income,2) }}</h3>
                 <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p>
               </div>
             </div>
@@ -70,7 +70,7 @@
           <div class="row">
             <div class="col-9">
               <div class="d-flex align-items-center align-self-start">
-                <h3 class="mb-0">$31.53</h3>
+                <h3 class="mb-0">${{ number_format($expense_current,2) }}</h3>
                 <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
               </div>
             </div>
@@ -94,24 +94,25 @@
           <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
             <div class="text-md-center text-xl-left">
               <h6 class="mb-1">Transfer to Paypal</h6>
-              <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
+              <p class="text-muted mb-0">{{ changeDateTimeFormat($transfer_paypal['time'],'d M Y, H:i:A') }}</p>
             </div>
             <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-              <h6 class="font-weight-bold mb-0">$236</h6>
+              <h6 class="font-weight-bold mb-0">${{ number_format($transfer_paypal['nominal'],2) }}</h6>
             </div>
           </div>
           <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
             <div class="text-md-center text-xl-left">
               <h6 class="mb-1">Tranfer to Stripe</h6>
-              <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
+              <p class="text-muted mb-0">{{ changeDateTimeFormat($transfer_stripe['time'],'d M Y, H:i:A') }}</p>
             </div>
             <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-              <h6 class="font-weight-bold mb-0">$593</h6>
+              <h6 class="font-weight-bold mb-0">${{ number_format($transfer_stripe['nominal'],2) }}</h6>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="col-md-8 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
@@ -222,7 +223,7 @@
           <div class="row">
             <div class="col-8 col-sm-12 col-xl-8 my-auto">
               <div class="d-flex d-sm-block d-md-flex align-items-center">
-                <h2 class="mb-0">$32123</h2>
+                <h2 class="mb-0">${{ number_format($revenue,2) }}</h2>
                 <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
               </div>
               <h6 class="text-muted font-weight-normal">11.38% Since last month</h6>
@@ -241,7 +242,7 @@
           <div class="row">
             <div class="col-8 col-sm-12 col-xl-8 my-auto">
               <div class="d-flex d-sm-block d-md-flex align-items-center">
-                <h2 class="mb-0">$45850</h2>
+                <h2 class="mb-0">${{ number_format($sales,2) }}</h2>
                 <p class="text-success ml-2 mb-0 font-weight-medium">+8.3%</p>
               </div>
               <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6>
@@ -260,7 +261,7 @@
           <div class="row">
             <div class="col-8 col-sm-12 col-xl-8 my-auto">
               <div class="d-flex d-sm-block d-md-flex align-items-center">
-                <h2 class="mb-0">$2039</h2>
+                <h2 class="mb-0">${{ number_format($purchase,2) }}</h2>
                 <p class="text-danger ml-2 mb-0 font-weight-medium">-2.1% </p>
               </div>
               <h6 class="text-muted font-weight-normal">2.27% Since last month</h6>
@@ -285,7 +286,78 @@
   <!-- End plugin js for this page -->
 
   <!-- Custom js for this page -->
-  <script src="{{ asset('admin/js/dashboard.js') }}"></script>
+  <script>
+    if ($("#transaction-history").length) {
+      var areaData = {
+        labels: ["Paypal", "Stripe","Cash"],
+        datasets: [{
+            data: {{ json_encode($chartdata) }},
+            backgroundColor: [
+              "#111111","#00d25b","#ffab00"
+            ]
+          }
+        ]
+      };
+      var areaOptions = {
+        responsive: true,
+        maintainAspectRatio: true,
+        segmentShowStroke: false,
+        cutoutPercentage: 70,
+        elements: {
+          arc: {
+              borderWidth: 0
+          }
+        },
+        legend: {
+          display: false
+        },
+        tooltips: {
+          enabled: true
+        }
+      }
+      var transactionhistoryChartPlugins = {
+        beforeDraw: function(chart) {
+          var width = chart.chart.width,
+              height = chart.chart.height,
+              ctx = chart.chart.ctx;
+
+          ctx.restore();
+          var fontSize = 1;
+          ctx.font = fontSize + "rem sans-serif";
+          ctx.textAlign = 'left';
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = "#ffffff";
+
+          var text = "$1200",
+              textX = Math.round((width - ctx.measureText(text).width) / 2),
+              textY = height / 2.4;
+
+          ctx.fillText(text, textX, textY);
+
+          ctx.restore();
+          var fontSize = 0.75;
+          ctx.font = fontSize + "rem sans-serif";
+          ctx.textAlign = 'left';
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = "#6c7293";
+
+          var texts = "Total",
+              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+              textsY = height / 1.7;
+
+          ctx.fillText(texts, textsX, textsY);
+          ctx.save();
+        }
+      }
+      var transactionhistoryChartCanvas = $("#transaction-history").get(0).getContext("2d");
+      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+        type: 'doughnut',
+        data: areaData,
+        options: areaOptions,
+        plugins: transactionhistoryChartPlugins
+      });
+    }
+  </script>
   <!-- End custom js for this page -->
   @endpush
 
