@@ -89,5 +89,5 @@ DB_PASSWORD=your_password
 - [Laravel Convention](https://github.com/wzije/dev-notes/blob/main/laravel_conventions.md)
 
 ## Credit
-Thanks to [laravel](https://laravel.com/) and [bootstraps](https://getbootstrap.com/).
+Thanks to [laravel](https://laravel.com/) and [bootstrap](https://getbootstrap.com/).
 
