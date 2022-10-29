@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Base\AdminBaseController;
 use Illuminate\Http\Request;
+use PDF;
 use App\Models\Sale;
 
 class ReportController extends AdminBaseController
@@ -22,9 +23,11 @@ class ReportController extends AdminBaseController
 
     public function sale_pdf()
     {
+        $params['title'] = 'Report Sales';
+        $params['date']  = date('Y-m-d');
         $params['rs_id'] = Sale::get_lists();
-
-        echo 'PDF';
+        $pdf = PDF::loadView('admin.report.sale_pdf', $params);
+        return $pdf->download('File_name_unduh.pdf');
     }
 
     public function sale_excel()
