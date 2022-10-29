@@ -62,7 +62,7 @@
                     <input type="file" id="image" name="image" class="form-control"/>
                     <input type="hidden" name="image_old" value="{{ isset($rs_id) ? $rs_id->image : '' }}" />
                     {{-- display image --}}
-                    <img id="show_image" src="{{ asset($rs_id->image)}}" class="img-thumbnail" />
+                    <img id="show_image" src="{{ isset($rs_id) ? asset($rs_id->image) : ''}}" class="img-thumbnail" />
                 </div>
               </div>
               <div class="form-group row">

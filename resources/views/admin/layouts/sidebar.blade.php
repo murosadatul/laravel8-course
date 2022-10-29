@@ -64,6 +64,7 @@
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
+
       <li class="nav-item menu-items">
         <a class="nav-link" data-toggle="collapse" href="#ui-posts" aria-expanded="false" aria-controls="ui-posts">
           <span class="menu-icon">
@@ -80,6 +81,7 @@
           </ul>
         </div>
       </li>
+
       <li class="nav-item menu-items">
         <a class="nav-link" data-toggle="collapse" href="#preference" aria-expanded="false" aria-controls="preference">
           <span class="menu-icon">
@@ -98,5 +100,40 @@
           </ul>
         </div>
       </li>
+
+      <li class="nav-item menu-items">
+        <a class="nav-link" data-toggle="collapse" href="#report" aria-expanded="false" aria-controls="report">
+          <span class="menu-icon">
+            <i class="mdi mdi-file-document"></i>
+          </span>
+          <span class="menu-title">Report</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="report">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/report/sale">Sales</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/revenue">Revenue</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/purchase">Purchase</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item menu-items">
+        <a class="nav-link" data-toggle="collapse" href="#integration_api" aria-expanded="false" aria-controls="integration_api">
+          <span class="menu-icon">
+            <i class="mdi mdi-link"></i>
+          </span>
+          <span class="menu-title">Integration API</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="integration_api">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/api_presensi">Presensi</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/api_keuangan">Keuangan</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/api_ppdb">PPDB</a></li>
+          </ul>
+        </div>
+      </li>
+
     </ul>
   </nav>

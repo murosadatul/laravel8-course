@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Master\MasterPostController;
 use App\Http\Controllers\Admin\Master\CategoryController;
 use App\Http\Controllers\Admin\Master\TagController;
+use App\Http\Controllers\Admin\ReportController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Illuminate\Http\Request;
@@ -68,4 +69,12 @@ Route::prefix('tag')->group(function (){
     Route::post('/', [TagController::class, "store"]);
     Route::put('/{id}', [TagController::class, "update"]);
     Route::delete('/{id}', [TagController::class, "destroy"]);
+});
+
+Route::prefix('report')->group(function (){
+    Route::get('/sale', [ReportController::class, "sale"]);
+    Route::get('/sale_pdf', [ReportController::class, "sale_pdf"]);
+    Route::get('/sale_excel', [ReportController::class, "sale_excel"]);
+    Route::get('/revenue', [ReportController::class, "revenue"]);
+    Route::get('/purchase', [ReportController::class, "purchase"]);
 });
