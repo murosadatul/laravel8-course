@@ -27,7 +27,12 @@ class ReportController extends AdminBaseController
         $params['date']  = date('Y-m-d');
         $params['rs_id'] = Sale::get_lists();
         $pdf = PDF::loadView('admin.report.sale_pdf', $params);
-        return $pdf->download('File_name_unduh.pdf');
+        // priview
+        return $pdf->stream('File_name_unduh.pdf',array("Attachment" => false));
+        exit(0);
+        // download
+        // return $pdf->download('File_name_unduh.pdf');
+
     }
 
     public function sale_excel()
