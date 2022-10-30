@@ -3,6 +3,7 @@
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Master\MasterPostController;
 use App\Http\Controllers\Admin\Master\CategoryController;
@@ -78,3 +79,6 @@ Route::prefix('report')->group(function (){
     Route::get('/revenue', [ReportController::class, "revenue"]);
     Route::get('/purchase', [ReportController::class, "purchase"]);
 });
+
+// export excel
+Route::get('users/export/', [UserController::class, 'export']);
