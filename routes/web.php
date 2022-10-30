@@ -4,6 +4,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Master\MasterPostController;
 use App\Http\Controllers\Admin\Master\CategoryController;
@@ -84,3 +85,5 @@ Route::prefix('report')->group(function (){
 Route::get('users/export/', [UserController::class, 'export']);
 Route::get('users/import/', [UserController::class, 'import']);
 Route::get('users/excel/', [UserController::class, 'excel']);
+
+Route::get('question/fetch', [QuestionController::class, 'fetch']);
