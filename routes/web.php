@@ -82,3 +82,4 @@ Route::prefix('report')->group(function (){
 
 // export excel
 Route::get('users/export/', [UserController::class, 'export']);
+Route::get('users/import/', [UserController::class, 'import']);
