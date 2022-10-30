@@ -13,7 +13,7 @@
     </nav>
 
     <div class="pull-right">
-        <a href="/report/sale_excel" >
+        <a href="#!" onclick="location.reload()">
             <button type="button" class="btn btn-outline-warning btn-icon-text"> Reload <i class="mdi mdi-refresh"></i></button>
         </a>
         &nbsp;
@@ -57,7 +57,7 @@
                             <td>{{ $item->region }}</td>
                             <td>{{ $item->item }}</td>
                             <td>{{ $item->sales_man }}</td>
-                            <td>{{ $item->unit }}</td>
+                            <td>{{ numberToCurrency($item->unit) }}</td>
                         </tr>
                     @empty
                     <tr>

@@ -6,11 +6,34 @@
 <body>
     <h1>{{ $title }}</h1>
     <p>{{ $date }}</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <table border="1">
+        <thead>
+          <tr>
+            <th width="20">No</th>
+            <th>Order Date</th>
+            <th>Region</th>
+            <th>Item</th>
+            <th>Sales Man</th>
+            <th>Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+            @forelse ($rs_id as $no=>$item)
+                <tr>
+                    <td>{{ ($no +1) }}</td>
+                    <td>{{ $item->order_date }}</td>
+                    <td>{{ $item->region }}</td>
+                    <td>{{ $item->item }}</td>
+                    <td>{{ $item->sales_man }}</td>
+                    <td>{{ numberToCurrency($item->unit) }}</td>
+                </tr>
+            @empty
+            <tr>
+                <td colspan="3"><i class="fa fa-folder-open"></i> Data tidak ada.</td>
+            </tr>
+
+            @endforelse
+        </tbody>
+      </table>
 </body>
 </html>
