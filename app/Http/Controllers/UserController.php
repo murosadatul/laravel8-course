@@ -12,6 +12,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        // check user login auntetication
+        $this->middleware('auth');
+    }
+
     public function export()
     {
         return Excel::download(new UsersExport, 'users.xlsx');

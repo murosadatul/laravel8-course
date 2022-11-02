@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Http;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        // check user login auntetication
+        $this->middleware('auth');
+    }
     public function fetch()
     {
         $response = Http::get('https://quizapi.io/api/v1/questions', [

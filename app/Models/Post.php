@@ -10,7 +10,9 @@ class Post extends Model
 {
     use HasFactory;
     protected $table = 'posts';
+    protected $primaryKey = 'id';
     protected $fillable = array('category_id','title','body','image','author');
+    protected $guarded = [];
 
     public function archives()
     {
