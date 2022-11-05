@@ -112,7 +112,7 @@
         <div class="collapse" id="report">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="/report/sale">Sales</a></li>
-            <li class="nav-item"> <a class="nav-link" href="/revenue">Revenue</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/report/revenue">Revenue</a></li>
             <li class="nav-item"> <a class="nav-link" href="/purchase">Purchase</a></li>
           </ul>
         </div>
