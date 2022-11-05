@@ -14,13 +14,12 @@ class AdminBaseController extends Controller
 
     public function __construct()
     {
+
     }
 
     private function base_load_app()
     {
-
-        $session = session::all();
-        if (array_key_exists('id',$session) == false)
+        if (!session()->has('user'))
         {
             $session= array();
             $user = Auth::user();
@@ -34,10 +33,9 @@ class AdminBaseController extends Controller
                 );
                 session($session);
             }
-
+            //share data with all views
+            View::share($session);
         }
-        //share data with all views
-        View::share($session);
     }
 
     private function base_view_app()
