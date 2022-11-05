@@ -10,11 +10,11 @@ use Illuminate\Http\Client\ConnectionException;
 
 class ApiIntegration
 {
-    public $user;
-    public $userSecret;
-    public $url;
-    public $keySecret;
-    public $token;
+    protected $user;
+    protected $userSecret;
+    protected $url;
+    protected $keySecret;
+    protected $token;
 
     /**
      * Class constructor.
@@ -110,7 +110,7 @@ class ApiIntegration
     {
 
 
-        $this->url = 'url';
+        $this->url = '...';
 
         if (!Session()->has('annawawi_token'))
         {
@@ -140,10 +140,10 @@ class ApiIntegration
 
     private function annawawiLogin()
     {
-        $requestParameter = 'url';
+        $requestParameter = 'login_mobile/kepala_sekolah';
         $request = Http::post($this->url.$requestParameter, [
-            'username'=>'[...]',
-            'password'=>'[...]'
+            'username'=>'...',
+            'password'=>'...'
         ]);
         $response = $request->json();
 
