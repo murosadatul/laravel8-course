@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Base\AdminBaseController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use App\Models\Category;
 use App\Models\About;
 use App\Models\Post;
@@ -21,7 +20,6 @@ class DashboardController extends AdminBaseController
 
     public function index( Request $request)
     {
-        $session = Session()->forget('annawawi_token');
         $params['potential_growth'] = 12.34;
         $params['revenue_current']  = 17.34;
         $params['daily_income']     = 12.34;
