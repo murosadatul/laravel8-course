@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 
 use App\Http\Controllers\Admin\IntegrationAPI\QuestionController;
+use App\Http\Controllers\Admin\IntegrationAPI\AnnawawiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -88,4 +89,6 @@ Route::get('users/export/', [UserController::class, 'export']);
 Route::get('users/import/', [UserController::class, 'import']);
 Route::get('users/excel/', [UserController::class, 'excel']);
 
+// api client
 Route::get('question/fetch', [QuestionController::class, 'fetch']);
+Route::get('annawawi/dashboard', [AnnawawiController::class, 'dashboard']);

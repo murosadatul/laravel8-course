@@ -4,21 +4,27 @@ namespace App\Http\Controllers\Admin\IntegrationAPI;
 
 use Illuminate\Http\Request;
 use App\Models\Question;
-use App\Http\Controllers\Admin\IntegrationAPI\BaseAPIController;
+use App\Http\Controllers\Base\AdminBaseController;
+use App\ApiIntegration;
 
-use Illuminate\Support\Facades\Http;
-
-class QuestionController extends BaseAPIController
+class QuestionController extends AdminBaseController
 {
+    protected $API;
+
     public function __construct()
     {
         // check user login auntetication
-        // $this->middleware('auth');
+        $this->middleware('auth');
+        $this->API = new ApiIntegration();
     }
+
     public function fetch()
     {
-        $response = parent::createSignatureQuizapi('questions');
+        $response = $this->API->createSignatureQuizapi('questions');
         $quizzes = json_decode($response);
+
+        dd($quizzes);
+        die();
 
         foreach($quizzes as $quiz)
         {
