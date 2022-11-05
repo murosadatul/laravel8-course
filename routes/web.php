@@ -4,7 +4,6 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Master\MasterPostController;
 use App\Http\Controllers\Admin\Master\CategoryController;
@@ -13,6 +12,9 @@ use App\Http\Controllers\Admin\ReportController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Illuminate\Http\Request;
+
+
+use App\Http\Controllers\Admin\IntegrationAPI\QuestionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

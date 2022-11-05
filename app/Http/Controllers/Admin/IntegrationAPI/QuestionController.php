@@ -1,27 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\IntegrationAPI;
 
 use Illuminate\Http\Request;
 use App\Models\Question;
+use App\Http\Controllers\Admin\IntegrationAPI\BaseAPIController;
+
 use Illuminate\Support\Facades\Http;
 
-class QuestionController extends Controller
+class QuestionController extends BaseAPIController
 {
     public function __construct()
     {
         // check user login auntetication
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     public function fetch()
     {
-        $response = Http::get('https://quizapi.io/api/v1/questions', [
-            'apiKey' => 'jrEBlHjyXA9W5vFNOyarIDInPoge7xqkTogvZZ8X',
-            'limit' => 15,
-        ]);
-
-        $quizzes = json_decode($response->body());
-
+        $response = parent::createSignatureQuizapi('questions');
+        $quizzes = json_decode($response);
 
         foreach($quizzes as $quiz)
         {
