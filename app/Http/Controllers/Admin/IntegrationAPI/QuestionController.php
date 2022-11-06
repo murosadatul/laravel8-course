@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\IntegrationAPI;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Http\Controllers\Base\AdminBaseController;
-use App\ApiIntegration;
+use App\Libraries\ApiIntegration;
 
 class QuestionController extends AdminBaseController
 {

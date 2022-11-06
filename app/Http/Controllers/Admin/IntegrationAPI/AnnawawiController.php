@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\IntegrationAPI;
 
 use App\Http\Controllers\Base\AdminBaseController;
 use Illuminate\Http\Request;
-use App\ApiIntegration;
+use App\Libraries\ApiIntegration;
 
 class AnnawawiController extends AdminBaseController
 {

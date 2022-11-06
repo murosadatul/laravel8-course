@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Libraries;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
@@ -108,9 +108,7 @@ class ApiIntegration
      */
     public function createSignatureAnnawawiApi($requestParameter,$method='get',$body='')
     {
-
-
-        $this->url = '...';
+        $this->url = '';
 
         if (!Session()->has('annawawi_token'))
         {
@@ -142,8 +140,8 @@ class ApiIntegration
     {
         $requestParameter = 'login_mobile/kepala_sekolah';
         $request = Http::post($this->url.$requestParameter, [
-            'username'=>'...',
-            'password'=>'...'
+            'username'=>'',
+            'password'=>''
         ]);
         $response = $request->json();
 
