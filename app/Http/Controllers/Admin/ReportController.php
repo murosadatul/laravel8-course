@@ -6,7 +6,7 @@ use App\Http\Controllers\Base\AdminBaseController;
 use Illuminate\Http\Request;
 use PDF;
 use App\Models\Sale;
-use App\Charts\SampleChart;
+use App\Services\ReportService;
 
 class ReportController extends AdminBaseController
 {
@@ -42,16 +42,9 @@ class ReportController extends AdminBaseController
         echo 'Excel';
     }
 
-    public function revenue()
+    public function revenue(ReportService $service)
     {
-        $chart = new SampleChart;
-        $chart->labels(['One', 'Two', 'Three', 'Four']);
-        $chart->dataset('My dataset', 'line', [1, 2, 3, 4])->options(['backgroundColor' => 'orange']);
-        $chart->dataset('My dataset 2', 'line', [4, 3, 2, 1])->options(['backgroundColor' => 'green']);
-        $params['chart'] = $chart;
-        $params['rs_id'] = Sale::get_lists();
-        // dd($params);
-        // die();
+        $params = $service->revenueChart();
         return parent::display('admin.report.revenue')->with($params);
     }
 
